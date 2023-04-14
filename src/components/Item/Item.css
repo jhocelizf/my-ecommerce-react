@@ -1,0 +1,39 @@
+.cardProducts {
+    background-color: #F1EFE5;
+    border-radius:  10px;
+    width: 20rem;
+    padding: 1rem;
+    margin: 1rem;
+    margin-left: 60px;
+    border: 1px solid #f6efcb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.textCard h3{
+    margin: 10px;
+}
+.textCard p{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.imgProducts {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border: 1px solid #D4AF37;
+}
+
+.btnProducts{
+    background-color: #7B5747;
+    color: #F1EFE5 ;
+    font-size: 1.2rem;
+    width: 8rem;
+    border-radius: 10px ;
+    border: none ;
+    text-decoration: none;
+    text-align: center;
+}
