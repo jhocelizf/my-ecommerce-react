@@ -3,15 +3,41 @@ import { getProducts, getProductsForCategory } from '../../asyncMock'
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 // importe nuevas funciones:
-import { collection, getDoc, where, query } from 'firebase/firestore';
+import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../services/firebase/config';
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
 
-    const {idCategory} =useParams();
+    const { idCategory } = useParams();
 
-    useEffect(()=> {
+    useEffect(() => {
+        const getData = async () => {
+            const queryRef = !idCategory
+                ? collection(db, "products")
+                : query(
+                    collection(db, "products"),
+                    where("idCategory", "==", parseInt(idCategory))
+                    );
+            const response = await getDocs(queryRef);
+            const productos = response.docs.map((doc) => {
+                const newProduct = {
+                    ...doc.data(),
+                    id: doc.id,
+                };
+                console.log(newProduct)
+                return newProduct;
+            });
+            setTimeout(() => {
+                setProducts(productos);
+            }, 2000)
+
+        }
+        getData();
+
+    }, [idCategory])
+
+    /* useEffect(()=> {
         const myProducts = idCategory ? query(collection(db, "products"), where("idCategory", "==", idCategory)): collection(db,"products");
 
         getDoc(myProducts)
@@ -23,21 +49,21 @@ const ItemListContainer = ({ greeting }) => {
             setProducts(newProducts);
         })
         .catch(error => console.log(error));
-    }, [])
+    }, []) */
 
-/*     useEffect(() => {
-
-        const functionProducts = idCategory ? getProductsForCategory : getProducts;
-
-        functionProducts(idCategory)
-            .then(response => setProducts(response))
-            .catch(error => console.error(error))
-    }, [idCategory]) */
+    /*     useEffect(() => {
+    
+            const functionProducts = idCategory ? getProductsForCategory : getProducts;
+    
+            functionProducts(idCategory)
+                .then(response => setProducts(response))
+                .catch(error => console.error(error))
+        }, [idCategory]) */
 
     return (
         <>
             <h1>{greeting}</h1>
-            <ItemList products= {products} />
+            <ItemList products={products} />
         </>
     )
 }

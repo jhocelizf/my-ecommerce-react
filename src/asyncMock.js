@@ -1,4 +1,4 @@
-const products = [
+/* const products = [
     {
         id: "1",
         name: "Cartera negra lujo",
@@ -60,9 +60,9 @@ const products = [
         stock: 25,
         description: "descripcion del producto"
     }
-]
+] */
 
-export const getProducts = () => {
+/* export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products)
@@ -92,3 +92,5 @@ export const getProductsForCategory = (idCategory) => {
     }, 100)
 
 }
+
+ */
