@@ -1,0 +1,10 @@
+.containerCar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #d5d4ce;
+    margin-top: 20px;
+    width: 440px;
+}

@@ -1,0 +1,47 @@
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    width: 400px;
+    height: auto;
+    padding: 50px, 55px, 85px, 55px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    text-align: center;
+}
+
+label{
+    margin: 20px;
+    cursor: pointer;
+}
+
+input{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 5px;
+    padding: 17px 10px;
+    border-radius: 10px;
+    border: 2px solid #ededed;
+    outline: none;
+}
+
+input::placeholder{
+    color: #c0c0c0;
+}
+
+.botonForm{
+    border: 0;
+    border-radius: 25px;
+    background: #7B5747;
+    width: 150px;
+    padding: 10px;
+    color: #f1efe5;
+    cursor: pointer;
+}
+

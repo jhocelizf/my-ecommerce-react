@@ -54,3 +54,13 @@
     border: none ;
     padding: 15px;
 }
+
+.ends{
+    background-color: #7B5747;
+    color: #F1EFE5 ;
+    font-size: 1.1rem;
+    width: 8rem;
+    border-radius: 10px ;
+    border: none ;
+    margin-top: 10px;
+}

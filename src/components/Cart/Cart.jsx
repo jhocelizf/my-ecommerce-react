@@ -1,3 +1,4 @@
+import "./Cart.css"
 import { Link } from "react-router-dom"
 import { useContext } from "react";
 import { CarContext } from "../../context/carContext";
@@ -21,8 +22,9 @@ const Cart = () => {
         <div>
             {car.map(product => <CartItem key={product.id} {...product} />) }
             <h3>Total: ${total}</h3>
-            <button onClick={() => clearCar()}> Vaciar Carrito </button>
-            <Link to="/checkout"> Finalizar Compra </Link>
+            <button onClick={() => clearCar()} className="buttonV"> Vaciar Carrito </button>
+            <Link to="/" className="buttonS"> Seguir comprando </Link>
+            <Link to="/checkout" className="ends"> Finalizar Compra </Link>
         </div>
     )
 }

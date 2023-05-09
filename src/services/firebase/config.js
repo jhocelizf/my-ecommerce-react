@@ -6,16 +6,16 @@ import { getFirestore } from "firebase/firestore";
 
 //creamos un objeto con toda la info de la cuenta de la base de datos
 const firebaseConfig = {
-    apiKey: "AIzaSyBQYzfEk_ldOtZV5q_cWVfe5chle2I8jKQ",
-    authDomain: "purse-ecommerce.firebaseapp.com",
-    projectId: "purse-ecommerce",
-    storageBucket: "purse-ecommerce.appspot.com",
-    messagingSenderId: "830826006167",
-    appId: "1:830826006167:web:ee50da19cdf2fa2bdacbd2"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain:process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId:process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId:process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
-// exportamos esta referencia para que este disponible en toda la app
+// esta referencia para que este disponible en toda la app

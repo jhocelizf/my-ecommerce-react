@@ -1,3 +1,4 @@
+import "./Checkout.css"
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarContext } from "../../context/carContext";
@@ -9,7 +10,7 @@ const Checkout = () => {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");
-    const [email, setEmail] = useContext("");
+    const [email, setEmail] = useState("");
     const [confirmEmail, setConfirmEmail] = useState("");
     const [error, setError] = useState("");
     const [orderId, setOrderId] = useState("");
@@ -39,7 +40,7 @@ const Checkout = () => {
             email,
         };
 
-        addDoc(collection(db, "orders", order))
+        addDoc(collection(db, "orders"), order)
             .then((docRef) => {
                 setOrderId(docRef.id);
                 clearCar();
@@ -50,9 +51,9 @@ const Checkout = () => {
             })
     }
     return (
-        <div>
+        <div className="containerForm">
             <h2>Checkout</h2>
-            <form onSubmit={handleSutmit}>
+            <form onSubmit={handleSutmit} className="form">
                 {car.map((product) => (
                     <div key={product.item.id}>
                         <p>
@@ -62,7 +63,7 @@ const Checkout = () => {
                     </div>
                 ))
                 }
-                <hr />
+                
                 <div>
                     <label htmlFor="">Nombre</label>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -84,7 +85,7 @@ const Checkout = () => {
                     <input type="email" value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} />
                 </div>
                 {error && <p style={{ color: "red" }}> {error} </p>}
-                <button type="submit"> Finalizar Compra </button>
+                <button type="submit" className="botonForm"> Finalizar Compra </button>
             </form>
 
             {
