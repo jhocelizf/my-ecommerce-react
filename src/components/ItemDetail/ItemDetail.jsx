@@ -1,7 +1,25 @@
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css"
+import { Link } from "react-router-dom"
+import { useState } from "react";
+// importamos carContext
+import { CarContext } from "../../context/carContext";
+import { useContext } from "react";
 
-const ItemDetail = ({ id, name, price, img, stock }) => {
+const ItemDetail = ({ id, name, price, img, stock, description }) => {
+
+    const [addQuantity, setAddQueantity] = useState(0);
+
+    const {addItem} = useContext(CarContext);
+
+    const quantityHandler = (queantity) => {
+        setAddQueantity(queantity);
+        
+        // Ahora aca creo un objeto con el item y la cantidad
+        const item = {id, name, price};
+        addItem(item, queantity );
+    }
+
     return (
         <>
             <div className="padreContainerItem">
@@ -10,12 +28,12 @@ const ItemDetail = ({ id, name, price, img, stock }) => {
                     <img className="imgDetail" src={img} alt={name} />
                     <h3>Precio: {price} </h3>
                     <h3>Id: {id} </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia consequuntur similique
-                        labore quos quae, inventore consequatur perferendis doloremque excepturi rerum, sunt
-                        molestiae hic quisquam aliquid. Eos distinctio maxime iure temporibus.</p>
+                    <p> {description}</p>
 
-                    <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log("cantidad agregada")}>
-                    </ItemCount>
+                    {
+                        addQuantity > 0 ? (<Link to="/cart"> Terminar compra </Link>) : (<ItemCount initial={1} stock={stock}
+                        onAdd={quantityHandler}/>)
+                    }
                 </div>
             </div>
         </>
@@ -23,3 +41,6 @@ const ItemDetail = ({ id, name, price, img, stock }) => {
 }
 
 export default ItemDetail;
+
+
+

@@ -30,7 +30,7 @@ const ItemListContainer = ({ greeting }) => {
             });
             setTimeout(() => {
                 setProducts(productos);
-            }, 2000)
+            }, 200)
 
         }
         getData();
