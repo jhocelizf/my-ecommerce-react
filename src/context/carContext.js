@@ -1,20 +1,27 @@
 import { useState, createContext } from "react";
-export const CarContext = createContext({car:[]});
-export const CarProvider = ({children}) => {
+export const CarContext = createContext({ car: [] });
+export const CarProvider = ({ children }) => {
 
 
     const [car, setCar] = useState([]);
     const totalQuantity = car.reduce((total, product) => total + product.quantity, 0)
-    // agregamos algunos metedos al proveedor de contexto para manipular el carrito de compras
-    // funcion agregar al carrito
 
     const addItem = (item, quantity) => {
-        if (!insideCart(item.id)){
-            setCar(prev => [...prev,{item, quantity}]);
-        } else{
-            console.log(("productos ya agregador"));
+        const newObj = {
+            ...item,
+            quantity,
+        };
+        if (insideCart(newObj.id)) {
+            car.map((el) => {
+                if (el.id === newObj.id) {
+                    el.quantity += newObj.quantity;
+                }
+                return el;
+            });
+        } else {
+            setCar([...car, newObj]);
         }
-    }
+    };
 
     //funcion para eliminar productos del carrito
 
@@ -25,7 +32,7 @@ export const CarProvider = ({children}) => {
 
     //funcion para vaciar el carrito
 
-    const clearCar = () =>{
+    const clearCar = () => {
         setCar([]);
     }
 
@@ -38,8 +45,8 @@ export const CarProvider = ({children}) => {
     // usamos el componente CarContext.Provider para enviar el valor actual del carrito y los metedos a los componet
     // de mi aplicacion que lo necesite
 
-    return(
-        <CarContext.Provider value={{car, addItem, clearCar, removeItem, totalQuantity}}>
+    return (
+        <CarContext.Provider value={{ car, addItem, clearCar, removeItem, totalQuantity }}>
             {children}
         </CarContext.Provider>
     )

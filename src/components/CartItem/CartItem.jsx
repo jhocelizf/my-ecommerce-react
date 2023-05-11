@@ -1,13 +1,14 @@
 import "./CartItem.css"
 
-const CartItem  = ({item, quantity}) => {
+const CartItem  = ({name,price, quantity}) => {
     return (
         <div className="containerCar">
-        <h4> {item.name}</h4>
+        <h4> {name}</h4>
         <p>Cantidad: {quantity}</p>
-        <p>Precio: $ {item.price} </p>
+        <p>Precio: $ {price} </p>
         </div>
     );
 }
 
 export default CartItem;
+

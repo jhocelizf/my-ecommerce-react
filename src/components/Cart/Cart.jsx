@@ -7,7 +7,7 @@ import CartItem from "../CartItem/CartItem"
 const Cart = () => {
     const { car, clearCar, totalQuantity } = useContext(CarContext);
 
-    const total = car.reduce((total, product) => total + (product.item.price * product.quantity), 0)
+    const total = car.reduce((total, product) => total + (product.price * product.quantity), 0)
 
     if (totalQuantity === 0) {
         return (
