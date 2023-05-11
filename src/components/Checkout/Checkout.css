@@ -45,3 +45,15 @@ input::placeholder{
     cursor: pointer;
 }
 
+.thanks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7B5747;
+    background-color: #ededed;
+    border-radius: 5px;
+    border: solid 2px #7B5747 ;
+    margin: 100px;
+    padding: 30px;
+    font-size: 25px;
+}

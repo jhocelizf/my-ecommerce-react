@@ -1,6 +1,5 @@
 import "./Checkout.css"
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { CarContext } from "../../context/carContext";
 import { db } from "../../services/firebase/config";
 import { collection, addDoc } from "firebase/firestore";
@@ -25,6 +24,7 @@ const Checkout = () => {
 
         if (email !== confirmEmail) {
             setError("Los emails no son iguales");
+            return;
         }
 
         const order = {
@@ -50,6 +50,13 @@ const Checkout = () => {
                 setError("Se produjo un error al crear la orden, vuelva a intentar");
             })
     }
+
+    if (orderId) {
+        return (
+            <span className="thanks"><strong>¡Gracias por tu Compra tu numero de orden es {orderId}!</strong> </span> 
+        ) 
+    }
+    
     return (
         <div className="containerForm">
             <h2>Checkout</h2>
@@ -87,12 +94,6 @@ const Checkout = () => {
                 {error && <p style={{ color: "red" }}> {error} </p>}
                 <button type="submit" className="botonForm"> Finalizar Compra </button>
             </form>
-
-            {
-                orderId && (
-                    <strong>¡Gracias por tu Compra tu numero de orden es {orderId}</strong>
-                )
-            }
         </div>
     );
 }
